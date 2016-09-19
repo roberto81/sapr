@@ -1,0 +1,12 @@
+.csfooter{
+	min-height: 100px;
+	width: 100%;
+	background-color:#eee;
+	padding-top: 15px;
+	padding-left: 15px;
+}
+.csjumbotron{
+	background-image: url("../image/drone.jpg");
+	background-size: cover;
+	color: white;
+}

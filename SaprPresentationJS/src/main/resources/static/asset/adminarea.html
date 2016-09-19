@@ -1,0 +1,39 @@
+<div class="row">
+	<div class="col-md-3">
+		<div class="row">
+			<div class="col-md-12">
+				<ul class="list-group">
+  					<li class="list-group-item active"><strong>User Profile</strong></li>
+  					<li class="list-group-item text-right"><span class="pull-left"><strong>Name:</strong></span>{{actrl.firstName}}</li>
+  					<li class="list-group-item text-right"><span class="pull-left"><strong>Surname:</strong></span>{{actrl.lastName}}</li>
+  					<li class="list-group-item text-right"><span class="pull-left"><strong>Username:</strong></span>{{actrl.username}}</li>
+  					<li class="list-group-item text-right"><span class="pull-left"><strong>Role:</strong></span>{{actrl.role}}</li>
+            <li class="list-group-item">
+              <button type="submit" class="btn btn-primary" ng-click="self.logout()">Log out</button>
+            </li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-9">
+		<ul class="list-group">
+  			<li class="list-group-item active"><strong>Control Panel.</strong></li>
+  		</ul>
+		<table class="table table-bordered">
+  			<tbody>
+    			<tr>
+    			  	<td><a class="btn btn-success btn-lg btn-block" href="#usermanagement" role="button">User Management</a></td>
+    			  	<td><p>Choose this functionality to manage Users. (Crate user and Delete user)</p></td>
+    			</tr>
+    			<tr>
+    		  		<td><a class="btn btn-success btn-lg btn-block" href="#dronemanagement" role="button">Drone Management</a></td>
+    		  		<td><p>Choose this functionality to manage Drones. (Crate drones, Delete Drones and Update drone)</p></td>
+    			</tr>
+    			<tr>
+    		  		<td><a class="btn btn-success btn-lg btn-block" href="#managementchecklist" role="button">Management Check List</a></td>
+    		  		<td><p>Choose this functionality to manage Check List. (Crate Check List, Delete Check List and Update Check List)</p></td>
+    			</tr>
+  			</tbody>
+		</table>
+	</div>
+</div>

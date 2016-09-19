@@ -1,0 +1,39 @@
+<div class="row">
+	<div class="col-md-3">
+		<div class="row">
+			<div class="col-md-12">
+				<ul class="list-group">
+  					<li class="list-group-item active"><strong>User Profile</strong></li>
+  					<li class="list-group-item text-right"><span class="pull-left"><strong>Name:</strong></span>{{pctrl.firstName}}</li>
+  					<li class="list-group-item text-right"><span class="pull-left"><strong>Surname:</strong></span>{{pctrl.lastName}}</li>
+  					<li class="list-group-item text-right"><span class="pull-left"><strong>Username:</strong></span>{{pctrl.username}}</li>
+  					<li class="list-group-item text-right"><span class="pull-left"><strong>Role:</strong></span>{{pctrl.role}}</li>
+            <li class="list-group-item">
+              <button type="submit" class="btn btn-primary" ng-click="self.logout()">Log out</button>
+            </li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-9">
+		<ul class="list-group">
+  			<li class="list-group-item active"><strong>Pannello di controllo.</strong></li>
+  		</ul>
+		<table class="table table-bordered">
+  			<tbody>
+    			<tr>
+    			  	<td><a class="btn btn-success btn-lg btn-block" href="#" role="button">Management Flight Plans</a></td>
+    			  	<td><p>Questo è uno stupido messaggio per effettuare una prova sulla dimensione della colonna.</p></td>
+    			</tr>
+    			<tr>
+    		  		<td><a class="btn btn-success btn-lg btn-block" href="#" role="button">Management Check List</a></td>
+    		  		<td><p>Questo è uno stupido messaggio per effettuare una prova sulla dimensione della colonna.</p></td>
+    			</tr>
+    			<tr>
+    		  		<td><a class="btn btn-success btn-lg btn-block" href="#" role="button">Item Test.</a></td>
+    		  		<td><p>Questo è uno stupido messaggio per effettuare una prova sulla dimensione della colonna.</p></td>
+    			</tr>
+  			</tbody>
+		</table>
+	</div>
+</div>

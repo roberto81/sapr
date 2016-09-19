@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/sapr.css">
+    <link rel="icon" href="image/droneicon.jpg" type="image/gif" sizes="16x16">
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/ui-bootstrap-tpls-2.1.2.min.js"></script>
+    <script src="js/application.js"></script>
+</head>
+<body>
+<div ng-app="myApp" ng-controller="mainCtrl as self">
+
+    <div class="container">
+        <div class="jumbotron csjumbotron">
+            <h1>SAPR</h1>
+            <h3>Sistemi Aeromobili a Pilotaggio Remoto</h3>
+        </div>
+
+        <div ng-view></div>
+        <div class="csfooter">
+        	<p>Application created by Roberto Pallotta</p>
+        	<address>E-mail: <a href="mailto:robertopallotta@tiscalinet.it">robertopallotta@tiscalinet.it</a></address>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

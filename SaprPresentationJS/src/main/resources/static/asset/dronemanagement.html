@@ -1,0 +1,117 @@
+<div class="row">
+	<div class="col-md-3">
+		<div class="row">
+			<div class="col-md-12">
+				<ul class="list-group">
+  					<li class="list-group-item active"><strong>User Profile</strong></li>
+  					<li class="list-group-item text-right"><span class="pull-left"><strong>Name:</strong></span>{{drMng.firstName}}</li>
+  					<li class="list-group-item text-right"><span class="pull-left"><strong>Surname:</strong></span>{{drMng.lastName}}</li>
+  					<li class="list-group-item text-right"><span class="pull-left"><strong>Username:</strong></span>{{drMng.username}}</li>
+  					<li class="list-group-item text-right"><span class="pull-left"><strong>Role:</strong></span>{{drMng.role}}</li>
+  					<li class="list-group-item">
+  						<button type="submit" class="btn btn-primary" ng-click="self.logout()">Log out</button>
+  					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-9">
+		<ul class="list-group">
+  			<li class="list-group-item active"><strong>Pannello di controllo.</strong></li>
+  		</ul>
+  		<table class="table table-bordered" ng-if="!droneFormTaggle">
+  			<tbody>
+    			<tr>
+    			  	<td><button class="btn btn-success" ng-click="toggleFormTableUser()">Insert Drone</button></td>
+    			  	<td><p>press the button to add a new drone</p></td>
+    			</tr>
+    		</tbody>
+  		</table>
+  		<form ng-if="droneFormTaggle" novalidate name="form">
+            <div class="row" ng-if="droneformGlobalError">
+                <div class="col-md-12">
+                    <div class="alert alert-danger" role="alert"> Sorry but the code for this drone already exists.</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Id Code:</label>
+                        <input type="text" ng-model="drMng.drone.idcode" class="form-control" name="idcode" required="">
+                        <div ng-show="form.$submitted || form.idcode.$touched">
+                            <div ng-show="form.idcode.$error.required" class="alert alert-warning">Insert the identification code.</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Drone Brand:</label>
+                        <input type="text" ng-model="drMng.drone.brand" class="form-control" name="brand" required="">
+                        <div ng-show="form.$submitted || form.brand.$touched">
+                            <div ng-show="form.brand.$error.required" class="alert alert-warning">Insert the brand for this drone.</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Drone Model:</label>
+                        <input type="text" ng-model="drMng.drone.model" class="form-control" name="model" required="">
+                        <div ng-show="form.$submitted || form.model.$touched">
+                            <div ng-show="form.model.$error.required" class="alert alert-warning">Insert the model for this drone.</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Motors Number:</label>
+                        <input type="number" ng-model="drMng.drone.numberRotors" class="form-control" name="number_rotors" required="">
+                        <div ng-show="form.$submitted || form.numberRotors.$touched">
+                            <div ng-show="form.numberRotors.$error.required" class="alert alert-warning">Insert the number of motor.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Engine Power</label>
+                        <select class="form-control" ng-model="drMng.drone.enginePower">
+                            <option value="battery">battery</option>
+                            <option value="avion">avion</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Weight:</label>
+                        <input type="number" ng-model="drMng.drone.weight" class="form-control" name="weight" required="">
+                        <div ng-show="form.$submitted || form.weight.$touched">
+                            <div ng-show="form.weight.$error.required" class="alert alert-warning">Insert number for weight.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-md-offset-8">
+                    <button type="button" class="btn btn-primary" ng-click="reset(form)">Cancel.</button>
+                    <button type="button" class="btn btn-success" ng-click="drMng.insertDrone(drMng.drone)">Insert Drone.</button>
+                </div>
+            </div>
+        </form>
+
+	  	<table ng-if="!droneFormTaggle" class="table table-bordered table-condensed table-hover table-sm">
+	  		<thead>
+	    		<tr>
+	    		  <th>Code</th>
+                  <th>brand</th>
+                  <th>model</th>
+	    		  <th>N. Rotors</th>
+	    		  <th>Engine Power</th>
+	    		  <th>weight</th>
+	    		  <th>Action</th>
+	    		</tr>
+	  		</thead>
+	  		<tbody>
+                <tr ng-repeat="drone in drMng.drones">
+                    <td>{{drone.code}}</td>
+                    <td>{{drone.brand}}</td>
+                    <td>{{drone.model}}</td>
+                    <td>{{drone.numberRotors}}</td>
+                    <td>{{drone.enginePower}}</td>
+                    <td>{{drone.weight}}</td>
+                    <td><button type="button" class="btn btn-warning" ng-click="drMng.updateDrone($index)">Edit</button> <button type="button" class="btn btn-danger" ng-click="drMng.deleteDrone($index)">Delete</button></td>
+                </tr> 
+            </tbody>
+        </table>
+	</div>
+</div>

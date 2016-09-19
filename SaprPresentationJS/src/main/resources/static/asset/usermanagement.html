@@ -1,0 +1,132 @@
+<div class="row">
+	<div class="col-md-3">
+		<div class="row">
+			<div class="col-md-12">
+				<ul class="list-group">
+  					<li class="list-group-item active"><strong>User Profile</strong></li>
+  					<li class="list-group-item text-right"><span class="pull-left"><strong>Name:</strong></span>{{usMng.firstName}}</li>
+  					<li class="list-group-item text-right"><span class="pull-left"><strong>Surname:</strong></span>{{usMng.lastName}}</li>
+  					<li class="list-group-item text-right"><span class="pull-left"><strong>Username:</strong></span>{{usMng.username}}</li>
+  					<li class="list-group-item text-right"><span class="pull-left"><strong>Role:</strong></span>{{usMng.role}}</li>
+  					<li class="list-group-item">
+  						<button type="submit" class="btn btn-primary" ng-click="self.logout()">Log out</button>
+  					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-9">
+		<ul class="list-group">
+  			<li class="list-group-item active"><strong>Control Panel.</strong></li>
+  		</ul>
+  		<table class="table table-bordered" ng-if="!formTableUser">
+  			<tbody>
+    			<tr>
+    			  	<td><button class="btn btn-success" ng-click="toggleFormTableUser()">Create Account</button></td>
+    			  	<td><p>press the button to create a new user with different user roles. (e.i. USER_ROLE or ADMIN_ROLE)</p></td>
+    			</tr>
+    		</tbody>
+  		</table>
+  		<form ng-if="formTableUser" novalidate name="form">
+            <div class="row" ng-if="formGlobalError">
+                <div class="col-md-12">
+                    <div class="alert alert-danger" role="alert"> Sorry but Username already exists!</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">First Name:</label>
+                        <input type="text" ng-model="usMng.user.firstName" class="form-control" name="firstName" required="">
+                        <div ng-show="form.$submitted || form.firstName.$touched">
+                            <div ng-show="form.firstName.$error.required" class="alert alert-warning">Tell us your First Name.</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Last Name:</label>
+                        <input type="text" ng-model="usMng.user.lastName" class="form-control" name="lastName" required="">
+                        <div ng-show="form.$submitted || form.lastName.$touched">
+                            <div ng-show="form.lastName.$error.required" class="alert alert-warning">Tell us your Last Name.</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Age:</label>
+                        <input type="number" ng-model="usMng.user.age" class="form-control" name="age" required="">
+                        <div ng-show="form.$submitted || form.age.$touched">
+                            <div ng-show="form.age.$error.required" class="alert alert-warning">Tell us your Age.</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Username:</label>
+                        <input type="text" ng-model="usMng.user.username" class="form-control" name="username" required="">
+                        <div ng-show="form.$submitted || form.username.$touched">
+                            <div ng-show="form.username.$error.required" class="alert alert-warning">Tell us your Username.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Password:</label>
+                        <input type="password" ng-model="usMng.user.password" class="form-control" name="password" required="">
+                        <div ng-show="form.$submitted || form.password.$touched">
+                            <div ng-show="form.password.$error.required" class="alert alert-warning">Tell us your Password.</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Confirm Password:</label>
+                        <input type="password" ng-model="confirmPassword"  class="form-control" name="confirmpassword" required="">
+                        <div ng-show="form.$submitted || form.confirmpassword.$touched">
+                            <div ng-show="form.confirmpassword.$error.required" class="alert alert-warning">Confirm password.</div>
+                        </div>
+                        <div ng-if="usMng.user.password != confirmPassword" class="alert alert-danger">Passwords do not match</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">User Role</label>
+                        <select class="form-control" ng-model="usMng.user.role">
+                            <option value="ROLE_USER">User</option>
+                            <option value="ROLE_ADMIN">Admin</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Account Sate</label>
+                        <select class="form-control" ng-model="usMng.user.enabled">
+                            <option value="1">Enable</option>
+                            <option value="0">Disable</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-md-offset-8">
+                    <button type="button" class="btn btn-primary" ng-click="reset(form)">Cancel.</button>
+                    <button type="button" class="btn btn-success" ng-click="usMng.insertUser(usMng.user)">Create Account.</button>
+                </div>
+            </div>
+        </form>
+
+	  	<table ng-if="!formTableUser" class="table table-bordered table-condensed table-hover table-sm">
+	  		<thead>
+	    		<tr>
+	    		  <th>First Name</th>
+	    		  <th>Last Name</th>
+	    		  <th>Age</th>
+	    		  <th>Username</th>
+	    		  <th>Role</th>
+	    		  <th>Account State</th>
+	    		  <th>Action</th>
+	    		</tr>
+	  		</thead>
+	  		<tbody>
+	    		<tr ng-repeat="user in usMng.users">
+        			<td>{{user.firstName}}</td>
+        			<td>{{user.lastName}}</td>
+        			<td>{{user.age}}</td>
+        			<td>{{user.username}}</td>
+        			<td>{{user.role}}</td>
+        			<td>{{user.enabled}}</td>
+        			<td><button type="button" class="btn btn-danger" ng-click="usMng.deleteUser($index)">Delete</button></td>
+        		</tr> 
+	  		</tbody>
+		</table>
+	</div>
+</div>
